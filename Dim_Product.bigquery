@@ -1,0 +1,41 @@
+-- Cleansed Production.Product Table --
+with product as (
+SELECT 
+  ProductID,
+  Name,
+  -- ProductNumber,
+  MakeFlag,
+  FinishedGoodsFlag,
+  Color,
+  -- SafetyStockLevel,
+  -- ReorderPoint,
+  StandardCost,
+  ListPrice,
+  Size,
+  -- SizeUnitMeasureCode,
+  -- WeightUnitMeasureCode,
+  Weight,
+  DaysToManufacture,
+  ProductLine,
+  Class,
+  Style,
+  ProductSubcategoryID,
+  ProductModelID,
+  -- SellStartDate,
+  -- SellEndDate,
+  -- DiscontinuedDate,
+  -- rowguid,
+  ModifiedDate
+FROM `adventureworks2019.Production.Product` 
+)
+-- Create Dim_Product by merging Production.Product, Production.ProductSubcategory, and Production.ProductCategory tables. Filter FinishedGoodsFlag = 1 to chooose Product is salable.
+select
+  a.*,
+  b.Name as SubCategory,
+  c.Name as Category
+from product a
+left join `adventureworks2019.Production.ProductSubcategory` b
+on safe_cast(a.ProductSubcategoryID as int64) = b.ProductSubcategoryID
+left join `adventureworks2019.Production.ProductCategory` c
+on b.ProductCategoryID = c.ProductCategoryID
+where a.FinishedGoodsFlag = 1
