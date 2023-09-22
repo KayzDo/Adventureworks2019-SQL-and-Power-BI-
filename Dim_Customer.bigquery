@@ -1,0 +1,36 @@
+-- Cleansed Person.Person Table --
+with demographics as (
+SELECT
+ BusinessEntityID,
+ PersonType,
+ CONCAT(FirstName, ' ', IFNULL(MiddleName, ''), '.', LastName) AS name,
+  REGEXP_EXTRACT(Demographics, r'<TotalPurchaseYTD>([^<]*)</TotalPurchaseYTD>') AS TotalPurchaseYTD,
+  REGEXP_EXTRACT(Demographics, r'<DateFirstPurchase>([^<]*)</DateFirstPurchase>') AS DateFirstPurchase,
+  REGEXP_EXTRACT(Demographics, r'<BirthDate>([^<]*)</BirthDate>') AS BirthDate,
+  REGEXP_EXTRACT(Demographics, r'<MaritalStatus>([^<]*)</MaritalStatus>') AS MaritalStatus,
+  REGEXP_EXTRACT(Demographics, r'<YearlyIncome>([^<]*)</YearlyIncome>') AS YearlyIncome,
+  REGEXP_EXTRACT(Demographics, r'<Gender>([^<]*)</Gender>') AS Gender,
+  REGEXP_EXTRACT(Demographics, r'<TotalChildren>([^<]*)</TotalChildren>') AS TotalChildren,
+  REGEXP_EXTRACT(Demographics, r'<NumberChildrenAtHome>([^<]*)</NumberChildrenAtHome>') AS NumberChildrenAtHome,
+  REGEXP_EXTRACT(Demographics, r'<Education>([^<]*)</Education>') AS Education,
+  REGEXP_EXTRACT(Demographics, r'<Occupation>([^<]*)</Occupation>') AS Occupation,
+  REGEXP_EXTRACT(Demographics, r'<HomeOwnerFlag>([^<]*)</HomeOwnerFlag>') AS HomeOwnerFlag,
+  REGEXP_EXTRACT(Demographics, r'<NumberCarsOwned>([^<]*)</NumberCarsOwned>') AS NumberCarsOwned,
+FROM
+  `adventureworks2019.Person.Person`
+)
+-- Create Dim_Customer table by merging Person.Person, Sales.Customer, and Sales.SalesTerritory tables
+select 
+  a.CustomerID,
+  a.PersonID,
+  a.TerritoryID,
+  b.*,
+  c.Name,
+  c.CountryRegionCode,
+  c.Group
+from `adventureworks2019.Sales.Customer` a
+left join demographics b
+on safe_cast(a.PersonID as int) = b.BusinessEntityID 
+left join `adventureworks2019.Sales.SalesTerritory` c
+on a.TerritoryID = c.TerritoryID
+where a.PersonID is not null and a.PersonID <> 'NULL'
