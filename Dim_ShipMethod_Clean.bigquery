@@ -1,0 +1,9 @@
+-- Cleansed Dim_ShipMethod Table
+SELECT 
+  ShipMethodID,
+  Name,
+  ShipBase,
+  ShipRate,
+  -- rowguid,
+  ModifiedDate
+ FROM `adventureworks2019.Purchasing.ShipMethod` 
