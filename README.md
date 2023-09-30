@@ -3,6 +3,7 @@
 ### 1. Introduction to Dataset and Data Dictionary
 * Dataset: **Adventureworks2019**
 - Details about Dataset: Bigquery Adventureworks2019 dataset
+
 - Details about Data Dictionary: https://dataedo.com/download/AdventureWorks.pdf
 ### 2. Business Questions
 -	Customer segmentation and profiling: The sales team needs to be able to extract valuable information from raw data available in the databases to answer questions such as the following:
