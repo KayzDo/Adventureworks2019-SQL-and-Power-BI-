@@ -31,15 +31,19 @@
 
 ## III. Visualization
 ### 1. Sales Performance
-![image](https://github.com/KayzDo/SQL-Code/assets/141127437/5fde4dc5-fcf5-49ab-8f0e-af33c2b66b2a)
+![pbi project](https://github.com/KayzDo/Adventureworks2019-SQL-and-Power-BI-/assets/141127437/32b9d37b-0733-49ff-ba0d-61e489e9cfca)
 
-### 2. Product Details
-![image](https://github.com/KayzDo/SQL-Code/assets/141127437/08845f8a-8ee7-4fc4-8b1c-b9c90737f691)
+### 2. Product Sales Performance
+![pbi project1](https://github.com/KayzDo/Adventureworks2019-SQL-and-Power-BI-/assets/141127437/497e9176-5c82-4417-a309-f13b6b1ee2c0)
 
-### 3. Customer Details
-![image](https://github.com/KayzDo/SQL-Code/assets/141127437/b9e2745e-eb4f-43d5-a194-e7e90ce30877)
+### 3. Customer Analysis
+![pbi project2](https://github.com/KayzDo/Adventureworks2019-SQL-and-Power-BI-/assets/141127437/7bdf5693-5b81-406f-8de1-534e044b1e31)
+
+### 4. Customer Retention Rate
+![pbi project3](https://github.com/KayzDo/Adventureworks2019-SQL-and-Power-BI-/assets/141127437/4dccf766-bf58-4057-baf6-02421b740a3c)
 
 ## IV. Insights
+
 
 | Overview Description                            | Recommendations                                                                                                 |
 |--------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
